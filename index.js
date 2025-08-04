@@ -6,6 +6,7 @@ const selectScheme = document.getElementById("select-scheme")
 const selectDisplay = document.querySelector(".select-display")
 const options = document.getElementById("options")
 const getSchemeBtn = document.getElementById("get-scheme-btn")
+const main = document.getElementById("main")
 
 // Color bars & HEX codes
 const colorBars = [
@@ -35,6 +36,20 @@ function buildEndpoint() {
 function getColors(data) {
    const colorsArr = data.colors.map(color => color.hex.value)
    return colorsArr
+}
+
+function fetchColors() {
+   fetch(`${baseUrl}${buildEndpoint()}`)
+      .then(res => {
+         if (!res.ok) throw new Error("API response error")
+         return res.json()
+      })
+      .then(data => getColors(data))
+      .then(colorsArr => renderColors(colorsArr))
+      .catch(err => {
+         console.log(err)
+         alert("Unable to get color scheme. Please, try again later.")
+      })
 }
 
 function renderColors(colorsArr) {
@@ -92,28 +107,31 @@ document.addEventListener("click", (e) => {
    }
 })
 
-// Click getSchemeBtn btn
-getSchemeBtn.addEventListener("click", () => {
-   fetch(`${baseUrl}${buildEndpoint()}`)
-      .then(res => {
-         if (!res.ok) throw new Error("API response error")
-         return res.json()
-      })
-      .then(data => getColors(data))
-      .then(colorsArr => renderColors(colorsArr))
-      .catch(err => {
-         console.log(err)
-         alert("Unable to get color scheme. Please, try again later.")
-      })
+// Copy HEX code by clicking any of them
+hexCodes.forEach(code => {
+   code.addEventListener("click", () => {
+      const hexValue = code.textContent
+      
+      navigator.clipboard.writeText(code.textContent)
+         .then(() => {
+            code.textContent = "Copied!"
+            code.style.color = "green"
+            setTimeout(() => {
+               code.textContent = hexValue
+               code.style.color = "" // Clear inline color to use CSS color
+            }, 750)
+         })
+         .catch(err => {
+            console.error("Error trying to copy: ", err)
+            alert("An error occurred trying to copy HEX code")
+         })
+   })
 })
 
+// INITIAL LOAD (after DOM is loaded -> show initial colors)
+document.addEventListener("DOMContentLoaded", () => {
+   fetchColors()
+})
 
-// INITIAL LOAD (default colors) ----> it smells!!
-fetch(`${baseUrl}${buildEndpoint()}`)
-   .then(res => {
-      if (!res.ok) throw new Error("API response error");
-      return res.json();
-   })
-   .then(data => getColors(data))
-   .then(colorsArr => renderColors(colorsArr))
-   .catch(err => console.error(err));
+// Click getSchemeBtn btn to get color scheme
+getSchemeBtn.addEventListener("click", fetchColors)
