@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <main id="main">
+            <header>
+                <div id="theme-toggle" class="theme-toggle" tabindex="0" aria-label="Toggle theme">
+                    <div class="toggle-knob"></div>
+                </div>
+                <h1 id="site-title" class="site-title">ColorGenerator</h1>
+            </header>
+            <section id="input-section">
+                <input id="seed-color" type="color" aria-label="Pick your seed color">
+                <div class="select-wrapper" tabindex="0">
+                    <div id="select-scheme" class="select-display">Monochrome</div>
+                    <!--- JS generated options --->
+                    <ul id="options" class="options hidden">
+                        <li data-value="monochrome" class="option selected-option">Monochrome</li>
+                        <li data-value="monochrome-dark" class="option">Monochrome-dark</li>
+                        <li data-value="monochrome-light" class="option">Monochrome-light</li>
+                        <li data-value="analogic" class="option">Analogic</li>
+                        <li data-value="complement" class="option">Complement</li>
+                        <li data-value="analogic-complement" class="option">Analogic-complement</li>
+                        <li data-value="triad" class="option">Triad</li>
+                    </ul>
+                </div>
+                <button id="get-scheme-btn" type="submit">Get color scheme</button>
+            </section>
+            <section id="output-section">
+                <div id="colors-container" class="colors-container">
+                    <!-- Color bars -->
+                    <div id="color-one" class="color-bar col-one"></div>
+                    <div id="color-two" class="color-bar col-two"></div>
+                    <div id="color-three" class="color-bar col-thr"></div>
+                    <div id="color-four" class="color-bar col-fou"></div>
+                    <div id="color-five" class="color-bar col-fiv"></div>
+                    <!-- Hex codes -->
+                    <div id="hex-one" class="hex-code hex-one">Loading...</div>
+                    <div id="hex-two" class="hex-code hex-two">Loading...</div>
+                    <div id="hex-three" class="hex-code hex-thr">Loading...</div>
+                    <div id="hex-four" class="hex-code hex-fou">Loading...</div>
+                    <div id="hex-five" class="hex-code hex-fiv">Loading...</div>
+                </div>
+            </section>
+        </main>
+        <script src="index.js"></script>
+    </body>
+</html>

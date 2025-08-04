@@ -1,0 +1,325 @@
+:root {
+    /* Colors */
+    --picker-border: #E5E5E5;
+    --main-bg-light: #ffffff;
+    --main-bg-dark: #1F2937;
+    --select-light: #111827;
+    --select-dark: #D5D4D8;
+    --select-bg-light: #ffffff;
+    --select-bg-dark: #1F293A;
+    --op-light: #111827;
+    --op-dark: #ffffff;
+    --selected-op-light: #111827;
+    --selected-op-dark: #ffffff;
+    --get-scheme-light: #374151;
+    --get-scheme-dark: #ffffff;
+    --get-scheme-bg-light: #ffffff;
+    --get-scheme-border-light: #D1D5DB;
+    --get-scheme-bg-dark: #3D4B60;
+    --hexcode-light: #2B283A;
+    --hexcode-dark: #D5D4D8;
+    
+    /* Fonts */
+    --main-font-family: "Inter", sans-serif;
+    
+    /* Default stripe color */
+    --default-stripe-bg: #ffffff;
+}
+
+
+/* Dark mode styles */
+h1.site-title.dark {
+    color: var(--hexcode-dark);
+}
+
+main.dark {
+    background-color: var(--main-bg-dark);
+}
+
+#select-scheme.dark {
+    color: var(--select-dark);
+    background-color: var(--select-bg-dark);
+    background-image: url("icons/arrow-down-dark.png");
+}
+
+.select-wrapper .options.dark {
+    color: var(--select-dark);
+    background-color: var(--select-bg-dark);
+    border: none;
+}
+
+#select-scheme.dark,
+button#get-scheme-btn.dark,
+.select-wrapper .options.dark {
+    border-color: var(--get-scheme-border-dark);
+}
+
+.selected-option.dark {
+    background-image: url("icons/tick-dark.png");
+    color: var(--selected-op-dark);
+}
+
+button#get-scheme-btn.dark {
+    color: var(--get-scheme-dark);
+    background-color: var(--get-scheme-bg-dark);
+    border: none;
+}
+
+.hex-code.dark {
+    color: var(--hexcode-dark);
+}
+
+.dark {
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+
+/* General styles */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4 {
+    margin: 0;
+    padding: 0;
+}
+
+ul, li {
+    list-style-type: none;
+}
+
+body {
+    font-family: var(--main-font-family);
+    background: whitesmoke;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: 550px;
+    height: 100vh;
+    min-width: 430px;
+    max-width: 550px;
+    max-height: 604px;
+    background: var(--main-bg-light);
+    margin: 0 auto;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.12);
+}
+
+header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid var(--get-scheme-border-light);
+}
+
+.theme-toggle,
+button#get-scheme-btn,
+input[type="color"],
+.select-display,
+.select-wrapper .options {
+    cursor: pointer;
+}
+
+.theme-toggle {
+    position: absolute;
+    left: 1.5em;
+    width: 50px;
+    height: 24px;
+    background: var(--get-scheme-border-light);
+    border-radius: 24px;
+    padding: 2px;
+}
+
+.toggle-knob {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--get-scheme-bg-light);
+    border-radius: 50%;
+    transition: all 0.3s;
+    background-image: url("icons/dark-mode.svg");
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: 2px;
+}
+
+main.dark .toggle-knob {
+    transform: translateX(26px) rotate(360deg);
+    background-color: var(--main-bg-dark);
+    background-image: url("icons/light-mode.svg");
+}
+
+main.dark .theme-toggle {
+    background-color: var(--get-scheme-border-light);
+}
+
+h1.site-title {
+    font-size: 2rem;
+    padding: .25em;
+    color: var(--hexcode-light);
+}
+
+#input-section {
+    display: flex;
+    justify-content: center;
+    gap: 0.75em;
+    padding: 1.5em;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.12);
+}
+
+input#seed-color {
+    width: 11vw;
+    height: 100%;
+    border: none;
+    background: #E5E5E5;
+}
+
+#select-scheme,
+.select-wrapper .options {
+    border-radius: 6px;
+}
+
+#select-scheme {
+    display: flex;
+    align-items: center;
+    color: var(--select-light);
+    width: 300px;
+    height: 100%;
+    padding-left: 13px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    background-image: url("icons/arrow-down.png");
+    background-repeat: no-repeat;
+    background-position: 95%;
+}
+
+.select-wrapper {
+    width: 312px;
+}
+
+.select-wrapper .options {
+    position: absolute;
+    color: var(--select-light);
+    background-color: var(--select-bg-light);
+    width: 300px;
+    margin-top: 0.25em;
+}
+
+.options li {
+    padding: 0.5em 0.75em;
+}
+
+.options li:hover {
+    background-color: var(--get-scheme-border-light);
+}
+
+#select-scheme,
+button#get-scheme-btn,
+.select-wrapper .options {
+    border: 1px solid var(--get-scheme-border-light);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+#select-scheme:hover,
+button#get-scheme-btn:hover,
+.select-wrapper .options:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+button#get-scheme-btn {
+    position: relative;
+    width: 24vw;
+    font-size: 13px;
+    padding: 1em 0.5em;
+    border-radius: 4px;
+    white-space: nowrap;
+    color: var(--get-scheme-light);
+    background: var(--get-scheme-bg-light);
+}
+
+.colors-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas:
+        "col-one col-two col-thr col-fou col-fiv"
+        "hex-one hex-two hex-thr hex-fou hex-fiv"
+    ;
+}
+
+.color-bar {
+    height: 414px;
+    background: var(--default-stripe-bg);
+    transition: background .3s ease;
+}
+
+.col-one {
+    grid-template: col-one;
+}
+
+.col-two {
+    grid-template: col-two;
+}
+
+.col-thr {
+    grid-template: col-thr;
+}
+
+.col-fou {
+    grid-template: col-fou;
+}
+
+.col-fiv {
+    grid-template: col-fiv;
+}
+
+.hex-code {
+    text-align: center;
+    margin-top: 1em;
+    font-size: 0.8rem;
+    line-height: 24px;
+    color: var(--hexcode-light);
+    cursor: url("icons/copy-content.svg") 16 16, copy;
+}
+
+.hex-one {
+    grid-template: hex-one;
+}
+
+.hex-two {
+    grid-template: hex-two;
+}
+
+.hex-thr {
+    grid-template: hex-thr;
+}
+
+.hex-fou {
+    grid-template: hex-fou;
+}
+
+.hex-fiv {
+    grid-template: hex-fiv;
+}
+
+
+/* Utility classes */
+
+.hidden {
+    display: none;
+}
+
+.selected-option {
+    font-weight: bold;
+    background-image: url("icons/tick.png");
+    background-repeat: no-repeat;
+    background-position: 95%;
+    color: var(--selected-op-light);
+}
