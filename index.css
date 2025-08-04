@@ -253,67 +253,44 @@ button#get-scheme-btn {
 .colors-container {
    display: grid;
    grid-template-columns: repeat(5, 1fr);
+   grid-template-rows: 414px 50px; /* Fila para barras, fila para códigos */
    grid-template-areas:
       "col-one col-two col-thr col-fou col-fiv"
       "hex-one hex-two hex-thr hex-fou hex-fiv"
    ;
+   position: relative;
 }
 
 .color-bar {
-   height: 414px;
+   height: 100%;
    background: var(--default-stripe-bg);
    transition: background .3s ease;
 }
 
-.col-one {
-   grid-template: col-one;
-}
-
-.col-two {
-   grid-template: col-two;
-}
-
-.col-thr {
-   grid-template: col-thr;
-}
-
-.col-fou {
-   grid-template: col-fou;
-}
-
-.col-fiv {
-   grid-template: col-fiv;
-}
+.col-one { grid-template: col-one; }
+.col-two { grid-template: col-two; }
+.col-thr { grid-template: col-thr; }
+.col-fou { grid-template: col-fou; }
+.col-fiv { grid-template: col-fiv; }
 
 .hex-code {
+   position: absolute;
+   top: 414px;
+   width: calc(100% / 5);
    text-align: center;
-   margin-top: 1em;
    font-size: 0.8rem;
    line-height: 24px;
    color: var(--hexcode-light);
    cursor: url("icons/copy-content.svg") 16 16, copy;
    transition: color 0.2s;
+   margin-top: 0.8em;
 }
 
-.hex-one {
-   grid-template: hex-one;
-}
-
-.hex-two {
-   grid-template: hex-two;
-}
-
-.hex-thr {
-   grid-template: hex-thr;
-}
-
-.hex-fou {
-   grid-template: hex-fou;
-}
-
-.hex-fiv {
-   grid-template: hex-fiv;
-}
+.hex-one { grid-template: hex-one; }
+.hex-two { grid-template: hex-two; }
+.hex-thr { grid-template: hex-thr; }
+.hex-fou { grid-template: hex-fou; }
+.hex-fiv { grid-template: hex-fiv; }
 
 
 /* Utility classes */
@@ -389,27 +366,39 @@ button#get-scheme-btn {
 
    .colors-container {
       grid-template-columns: 1fr;
+      grid-template-rows: repeat(5, 1fr);
       grid-template-areas:
          "col-one"
-         "hex-one"
          "col-two"
-         "hex-two"
          "col-thr"
-         "hex-thr"
          "col-fou"
-         "hex-fou"
-         "col-fiv"
-         "hex-fiv";
+         "col-fiv";
+      position: static;
    }
 
    .color-bar {
       height: 100px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      position: relative;
    }
 
    .hex-code {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: auto;
+      width: auto;
       font-size: 1rem;
-      margin: 0.5em 0;
-      padding: 0.5em;
+      margin-top: 0;
+      padding: .1em 0.5em;
+      background-color: rgba(255, 255, 255, 0.4);
+      border-radius: 0 0 0 12px;
+   }
+
+   .hex-code.dark {
+      background-color: rgba(0, 0, 0, 0.5);
    }
 
    h1.site-title {
