@@ -183,6 +183,8 @@ input#seed-color {
 #select-scheme,
 .select-wrapper .options {
    border-radius: 6px;
+   z-index: 1;
+   max-width: 323px;
 }
 
 #select-scheme {
@@ -236,6 +238,9 @@ button#get-scheme-btn:hover,
 
 button#get-scheme-btn {
    position: relative;
+   display: flex;
+   justify-content: center;
+   align-items: center;
    width: 24vw;
    font-size: 13px;
    padding: 1em 0.5em;
@@ -287,6 +292,7 @@ button#get-scheme-btn {
    line-height: 24px;
    color: var(--hexcode-light);
    cursor: url("icons/copy-content.svg") 16 16, copy;
+   transition: color 0.2s;
 }
 
 .hex-one {
@@ -322,4 +328,124 @@ button#get-scheme-btn {
    background-repeat: no-repeat;
    background-position: 95%;
    color: var(--selected-op-light);
+}
+
+
+@media screen and (max-width: 768px) {
+   main {
+      width: 100%;
+      min-width: 100%;
+      max-width: 100%;
+      max-height: none; /* Allow content to grow */
+      height: auto;
+      margin: 0;
+   }
+
+   header {
+      border: none;
+      padding: .8em 0 .2em;
+   }
+   
+   #input-section {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-areas: 
+         "inp sel sel sel sel sel"
+         "get get get get get get"
+      ;
+      /* flex-direction: column;
+      align-items: stretch;
+      gap: 1em; */
+      padding: 1em;
+   }
+
+   input#seed-color {
+      grid-area: inp;
+      width: 100%;
+      height: 44px; /* Min size for tactile accessibility */
+   }
+
+   .select-wrapper {
+      grid-area: sel;
+      width: 100%;
+   }
+
+   #select-scheme {
+      width: 100%;
+      height: 44px;
+      padding: 0.5em;
+   }
+
+   .select-wrapper .options {
+      width: 100%;
+   }
+
+   button#get-scheme-btn {
+      grid-area: get;
+      width: 100%;
+      height: 44px;
+      font-size: 1rem;
+   }
+
+   .colors-container {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+         "col-one"
+         "hex-one"
+         "col-two"
+         "hex-two"
+         "col-thr"
+         "hex-thr"
+         "col-fou"
+         "hex-fou"
+         "col-fiv"
+         "hex-fiv";
+   }
+
+   .color-bar {
+      height: 100px;
+   }
+
+   .hex-code {
+      font-size: 1rem;
+      margin: 0.5em 0;
+      padding: 0.5em;
+   }
+
+   h1.site-title {
+      font-size: 1.5rem;
+   }
+
+   .theme-toggle {
+      left: 1em;
+      width: 44px;
+      height: 22px;
+   }
+
+   .toggle-knob {
+      width: 18px;
+      height: 18px;
+   }
+
+   main.dark .toggle-knob {
+      transform: translateX(22px) rotate(360deg);
+   }
+}
+
+@media screen and (max-width: 430px) {
+   main {
+      box-shadow: none;
+   }
+
+   #input-section {
+      padding: 0.75em;
+   }
+
+   .hex-code {
+      font-size: 0.9rem;
+   }
+
+   h1.site-title {
+      font-size: 1.25rem;
+   }
 }
