@@ -68,6 +68,7 @@ function renderColors(colorsArr) {
 // EVENT LISTENERS
 // Toggle dark/light mode
 const domElements = [
+   document.body,
    document.getElementById("main"),
    document.getElementById("select-scheme"),
    document.getElementById("options"),
@@ -118,7 +119,7 @@ hexCodes.forEach(code => {
             code.style.color = "green"
             setTimeout(() => {
                code.textContent = hexValue
-               code.style.color = "" // Clear inline color to use CSS color
+               code.style.color = "" // Clear inline color to use CSS
             }, 750)
          })
          .catch(err => {
