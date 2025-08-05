@@ -1,6 +1,6 @@
 {
-   "name": "",
-   "short_name": "",
+   "name": "Color scheme generator",
+   "short_name": "Colors",
    "icons": [
       {
          "src": "icons/android-chrome-192x192.png",
